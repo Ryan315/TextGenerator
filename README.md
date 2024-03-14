@@ -1,25 +1,18 @@
 # TextGenerator
-
 - This is a tool for ocr dataset, text detection, fonts classification dataset generate.
-- 这是一个用来生成ocr数据，文字检测数据，字体识别的很方便的工具
 
-## 实现的功能：
+## Functions：
+- different font, size, color, rotation
+- multithreading
+- specific layout
+- find smooth area to attach
+- character-wised annotation
 
-- 生成基于不同语料的，不同字体、字号、颜色、旋转角度的文字贴图
-- 支持多进程快速生成
-- 文字贴图按照指定的布局模式填充到布局块中
-- 在图像中寻找平滑区域当作布局块
-- 支持文字区域的图块抠取导出（导出json文件，txt文件和图片文件，可生成voc数据，ICDAR_LSVT数据集格式!）
-- 支持每个文字级别的标注(存入了lsvt的json文件中)
-- 支持用户自己配置各项生成配(图像读取，生成路径，各种概率)
-
-## 效果预览
-
-### 生成图片示例:
+### image generated:
 
 ![](img/pic_7f6cb78368edaf8347a8f0ce7e5a46c2df4f3ddd.jpg)
 
-### 文字贴图示例:
+### image attach:
 
 ![](img/fragment_6fc1b6ac180755dea3dfe711550251708b5e2ce519.jpg)
 
@@ -29,17 +22,13 @@
 
 ![](img/fragment_f712bd7187d446b5fd5daf0ee0c6cb33ad26f98710.jpg)
 
-### 旋转矩形示例
+### rotation
 
 ![](img/rotate_rect.png)
 
-### 单个文字包围框示例
+### bounding box of single word
 
 ![](img/char_box.png)
-
-### 使用方式
-
-- 环境安装(Python3.6+，建议使用conda环境)
         
     ```
     # step 1
@@ -48,15 +37,21 @@
     sh make.sh
     ```
   
-- 编辑配置文件`config.yml`（可选）
+- config file
+    `config.yml`
     
-- 执行生成脚本
+- run script
 
     ```
     python3 run.py
     ```
   
-- 生成的数据
-    
-    生成的数据存放在`config.yml`中的`provider> layout> out_put_dir`指定的目录下。
+- data generated
+    `config.yml` -> `provider> layout> out_put_dir`
      
+## content modified
+1. np.int related
+2. check the piplist.txt for package version
+
+## todo:
+Math generation and manipulation for formula detection task
