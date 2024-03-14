@@ -1,4 +1,4 @@
-from ruamel import yaml
+from ruamel.yaml import YAML
 
 from service.provider.TextImgProvider import TextImgProvider
 from service.provider.BackgroundImgProvider import BackgroundImgProvider
@@ -33,11 +33,18 @@ def load_from_config():
     layout_provider = LayoutProvider(**conf['provider']['layout'])
 
 
+# def init_config():
+#     log.info("load config")
+#     global conf
+#     with open(os.path.join(basedir, "config.yml"), 'r') as f:
+#         conf = yaml.load(f.read(), Loader=yaml.Loader)
+#         load_from_config()
 def init_config():
     log.info("load config")
     global conf
+    yaml = YAML(typ='rt')  # Create a YAML object with round-trip type for loading and dumping
     with open(os.path.join(basedir, "config.yml"), 'r') as f:
-        conf = yaml.load(f.read(), Loader=yaml.Loader)
+        conf = yaml.load(f)  # No need to read the file content before loading
         load_from_config()
 
 
